@@ -900,7 +900,7 @@ const NavLinks = () => {
     </>
   );
 };
-export default NavLinks;
+export default NavLinks;rig
 ```
 
 ## Challenge (13) - Toggle Component
