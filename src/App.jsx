@@ -11,6 +11,12 @@ import {
   Checkout,
   Orders,
 } from './pages'
+import { ErrorElement } from './components';
+// loaders
+import { loader as landingLoader } from './pages/Landing';
+import { loader as SingleProductLoader } from './pages/singleProduct'
+// actions
+
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -22,6 +28,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
+        errorElement:<ErrorElement/>,
+        loader: landingLoader
       },
       {
         path: 'products',
@@ -30,6 +38,8 @@ const router = createBrowserRouter([
       {
         path: 'products/:id',
         element: <SingleProduct />,
+        errorElement:<ErrorElement/>,
+        loader: SingleProductLoader,
       },
       {
         path: 'cart',
