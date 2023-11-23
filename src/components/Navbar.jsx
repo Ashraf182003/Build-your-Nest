@@ -60,8 +60,7 @@ const Navbar = () => {
         </>
     ) : (
         <>
-            {/* moon icon for dark mode */}
-            <BsMoonFill className='swap-on h-4 w-4' />
+            
             {/* sun icon for light mode */}
             <BsSunFill className='swap-of h-4 w-4' />
         </>
