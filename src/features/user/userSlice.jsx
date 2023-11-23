@@ -1,15 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-
-
-
-
-
 const initialState = {
   user: { username: 'coding addict' },
   theme:"night",
 };
-
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -28,7 +22,14 @@ const userSlice = createSlice({
     },
   },
 });
-
 export const { loginUser, logoutUser, toggleTheme } = userSlice.actions;
-
 export default userSlice.reducer
+
+
+
+
+
+
+
+
+

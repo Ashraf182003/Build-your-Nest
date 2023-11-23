@@ -4,30 +4,25 @@ import { NavLink } from 'react-router-dom';
 import NavLinks from './NavLinks';
 import { toggleTheme } from '../features/user/userSlice';
 import { useState, useEffect } from 'react';
-
 const themes ={
     winter:"winter",
     night: "night"
 }
-
 const getThemeFromLocalStorage =()=>{
     return localStorage.getItem("theme")||themes.winter
 }
-
 const Navbar = () => {
-
     const[theme, setTheme]=useState(getThemeFromLocalStorage)
-    const handleTheme =()=>{
-      dispatch(toggleTheme)
-        const {winter, night}=themes
-        const newTheme= theme== winter ? night : winter
-        setTheme(newTheme)
-    }
+    const handleTheme = () => {
+      const { winter, night } = themes;
+      const newTheme = theme === winter ? night : winter;
+      setTheme(newTheme);
+  };
+  
    useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
       }, [theme])
-
   return (
     <nav className='bg-base-200'>
       <div className='navbar align-element '>
@@ -37,7 +32,6 @@ const Navbar = () => {
             to='/'
             className='hidden lg:flex btn btn-primary text-3xl items-center '
           >
-            
           </NavLink>
           {/* DROPDOWN */}
           <div className='dropdown'>
@@ -58,12 +52,21 @@ const Navbar = () => {
         <div className='navbar-end'>
           {/* THEME ICONS */}
           <label className='swap swap-rotate'>
-            <input type="checkbox" onChange={handleTheme} />
-            {/*sun icon*/}
-            <BsSunFill className='swap-on h-4 w-4' />
-            {/*moon icon*/}
+    <input type="checkbox" onChange={handleTheme} />
+    {theme === themes.winter ? (
+        <>
+            {/* moon icon for dark mode */}
             <BsMoonFill className='swap-of h-4 w-4' />
-          </label>
+        </>
+    ) : (
+        <>
+            {/* moon icon for dark mode */}
+            <BsMoonFill className='swap-on h-4 w-4' />
+            {/* sun icon for light mode */}
+            <BsSunFill className='swap-of h-4 w-4' />
+        </>
+    )}
+</label>
           {/* CART LINK*/}
           <NavLink to='cart' className='btn btn-ghost btn-circle btn-md ml-4'>
             <div className='indicator'>
