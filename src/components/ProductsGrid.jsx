@@ -37,5 +37,3 @@ const ProductsGrid = () => {
 
 export default ProductsGrid;
 
-export default ProductsGrid;
-

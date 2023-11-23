@@ -20,7 +20,7 @@ const Navbar = () => {
     const handleTheme =()=>{
       dispatch(toggleTheme)
         const {winter, night}=themes
-        const newTheme= theme== winter?  night : winter
+        const newTheme= theme== winter ? night : winter
         setTheme(newTheme)
     }
    useEffect(() => {

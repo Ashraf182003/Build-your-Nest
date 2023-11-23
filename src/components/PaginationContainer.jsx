@@ -1,9 +1,10 @@
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 
 const PaginationContainer = () => {
-  const { meta } = useLoaderData();
-  const { pageCount, page } = meta.pagination;
-  const pages = Array.from({ length: pageCount }, (_, index) => {
+  const loaderData = useLoaderData();
+  const { meta = {} } = loaderData || {};
+  const { pageCount, page } = meta.pagination || {};
+  const pages = Array.from({ length: pageCount || 0 }, (_, index) => {
     return index + 1;
   });
   const { search, pathname } = useLocation();
@@ -15,7 +16,7 @@ const PaginationContainer = () => {
     navigate(`${pathname}?${searchParams.toString()}`);
   };
 
-  if (pageCount < 2) return null;
+  if (!pageCount || pageCount < 2) return null;
 
   return (
     <div className='mt-16 flex justify-end'>
@@ -57,4 +58,5 @@ const PaginationContainer = () => {
     </div>
   );
 };
+
 export default PaginationContainer;
