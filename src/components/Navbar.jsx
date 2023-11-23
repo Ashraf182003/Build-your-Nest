@@ -2,6 +2,7 @@ import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import NavLinks from './NavLinks';
+import { toggleTheme } from '../features/user/userSlice';
 import { useState, useEffect } from 'react';
 
 const themes ={
@@ -17,11 +18,12 @@ const Navbar = () => {
 
     const[theme, setTheme]=useState(getThemeFromLocalStorage)
     const handleTheme =()=>{
+      dispatch(toggleTheme)
         const {winter, night}=themes
         const newTheme= theme== winter?  night : winter
         setTheme(newTheme)
     }
-    useEffect(() => {
+   useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
       }, [theme])
